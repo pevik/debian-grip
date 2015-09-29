@@ -1,0 +1,31 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 12-configure.in.dpatch by Petr Vorel <petr.vorel@gmail.com>
+##
+## DP: fix configure script for current stretch/sid
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/configure.in.orig grip-3.3.1/configure.in
+--- grip-3.3.1.orig/configure.in       2015-09-29 20:30:59.654347249 +0200
++++ grip-3.3.1/configure.in    2015-09-29 20:31:07.782506566 +0200
+@@ -106,7 +106,7 @@
+     fclose(output);
+     exit(0);
+ }
+-], . conftest.id3
++], . ./conftest.id3
+    echo "${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH}", 
+    AC_MSG_WARN(could not determine id3lib version),[echo $ac_n "cross compiling; assuming ${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH} $ac_c"])
+    AC_DEFINE_UNQUOTED(ID3LIB_MAJOR, $ID3LIB_MAJOR, [Description])
+diff -Naur grip-3.3.1.orig/configure.orig grip-3.3.1/configure
+--- grip-3.3.1.orig/configure  2015-09-29 20:43:10.794619301 +0200
++++ grip-3.3.1/configure       2015-09-29 20:43:18.138729340 +0200
+@@ -11275,7 +11275,7 @@
+   ac_status=$?
+   echo "$as_me:$LINENO: \$? = $ac_status" >&5
+   (exit $ac_status); }; }; then
+-  . conftest.id3
++  . ./conftest.id3
+    echo "${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH}"
+ else
+   echo "$as_me: program exited with status $ac_status" >&5

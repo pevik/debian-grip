@@ -9,3 +9,4 @@
 09-gain-adjustment.dpatch
 10-executable-path.dpatch
 11-x-www-browser.dpatch
+12-configure.in.dpatch
