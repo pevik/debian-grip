@@ -1,0 +1,54 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 01-default-encoder.dpatch by Taku Yasui <tach@debian.or.jp>
+##
+## DP: Set default encoder oggenc. (closes: #135113)
+## DP: Passes track number to oggent (Closes #322738).
+## DP: Using ~/ogg instead of ~/mp3 as output directory.
+## DP: Removes useless 'Created by Grip' comment (Closes: #214723).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/grip.c grip-3.3.1/src/grip.c
+--- grip-3.3.1.orig/src/grip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/grip.c	2006-08-14 22:09:38.000000000 +0000
+@@ -862,7 +862,7 @@
+   ginfo->using_builtin_cdp=FALSE;
+ #endif
+   ginfo->in_rip_thread=FALSE;
+-  strcpy(ginfo->ripfileformat,"~/mp3/%A/%d/%n.wav");
++  strcpy(ginfo->ripfileformat,"~/ogg/%A/%d/%n.wav");
+ #ifdef __linux__
+   FindExeInPath("cdparanoia", ginfo->ripexename, sizeof(ginfo->ripexename));
+   strcpy(ginfo->ripcmdline,"-d %c %t:[.%s]-%t:[.%e] %w");
+@@ -885,24 +885,24 @@
+   ginfo->stop_between_tracks=FALSE;
+   *ginfo->wav_filter_cmd='\0';
+   *ginfo->disc_filter_cmd='\0';
+-  ginfo->selected_encoder=1;
+-  strcpy(ginfo->mp3cmdline,"-h -b %b %w %m");
+-  FindExeInPath("lame", ginfo->mp3exename, sizeof(ginfo->mp3exename));
+-  strcpy(ginfo->mp3fileformat,"~/mp3/%A/%d/%n.%x");
+-  strcpy(ginfo->mp3extension,"mp3");
++  ginfo->selected_encoder=6;
++  strcpy(ginfo->mp3cmdline,"-a %a -b %b -d %y -G %g -N %t -l %d -o %m -t %n %w");
++  FindExeInPath("oggenc", ginfo->mp3exename, sizeof(ginfo->mp3exename));
++  strcpy(ginfo->mp3fileformat,"~/ogg/%A/%d/%n.%x");
++  strcpy(ginfo->mp3extension,"ogg");
+   ginfo->mp3nice=0;
+   *ginfo->mp3_filter_cmd='\0';
+   ginfo->delete_wavs=TRUE;
+   ginfo->add_to_db=FALSE;
+   ginfo->add_m3u=TRUE;
+   ginfo->rel_m3u=TRUE;
+-  strcpy(ginfo->m3ufileformat,"~/mp3/%A-%d.m3u");
++  strcpy(ginfo->m3ufileformat,"~/ogg/%A-%d.m3u");
+   ginfo->kbits_per_sec=128;
+   ginfo->edit_num_cpu=1;
+   ginfo->doid3=TRUE;
+   ginfo->doid3=FALSE;
+   ginfo->tag_mp3_only=TRUE;
+-  strcpy(ginfo->id3_comment,_("Created by Grip"));
++  strcpy(ginfo->id3_comment,_(""));
+   *ginfo->cdupdate='\0';
+   ginfo->sprefs.no_lower_case=FALSE;
+   ginfo->sprefs.allow_high_bits=FALSE;

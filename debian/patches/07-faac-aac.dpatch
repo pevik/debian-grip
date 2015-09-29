@@ -1,0 +1,20 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 08-faac-aac.dpatch by Flavio Stanchina <flavio@stanchina.net>
+##
+## DP: Add encode configuration for AAC files (Closes: #279224).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/gripcfg.c grip-3.3.1/src/gripcfg.c
+--- grip-3.3.1.orig/src/gripcfg.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/gripcfg.c	2006-09-29 09:26:10.000000000 +0000
+@@ -58,6 +58,9 @@
+ 				       "-o %m -a %a -l %d -t %n -b %b -N %t -G %G -d %y %w",
+ 				       "ogg"},
+ 				      {"flac","-V -o %m %w","flac"},
++				      {"faac",
++				       "-b %b -o %m -w --artist %a --title %n --genre %G --album %d --track %t/%N --year %y %w",
++				       "m4a"},
+ 				      {"other","",""},
+ 				      {"",""}
+ };

@@ -1,0 +1,32 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 06-version.dpatch by Hidetaka Iwai <tyuyu@sabishiro.net>
+##
+## DP: If the translated string of "Version %s" is more than 20 bytes, sprintf
+## DP: causes buffer overflow and grip may crash (Closes: #382516).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/grip.c grip-3.3.1/src/grip.c
+--- grip-3.3.1.orig/src/grip.c	2006-08-11 16:40:39.000000000 +0000
++++ grip-3.3.1/src/grip.c	2006-08-11 16:41:33.000000000 +0000
+@@ -541,7 +541,7 @@
+   GtkWidget *logo;
+   GtkWidget *ebox;
+   GtkWidget *button;
+-  char versionbuf[20];
++  gchar *versionbuf;
+ 
+   aboutpage=MakeNewPage(uinfo->notebook,_("About"));
+ 
+@@ -562,8 +562,10 @@
+ 
+   vbox2=gtk_vbox_new(TRUE,0);
+ 
+-  sprintf(versionbuf,_("Version %s"),VERSION);
++  versionbuf = g_strdup_printf(_("Version %s"),VERSION);
+   label=gtk_label_new(versionbuf);
++  g_free(versionbuf);
++
+   gtk_widget_set_style(label,uinfo->style_wb);
+   gtk_box_pack_start(GTK_BOX(vbox2),label,FALSE,FALSE,0);
+   gtk_widget_show(label);

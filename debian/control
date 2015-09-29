@@ -1,0 +1,23 @@
+Source: grip
+Section: gnome
+Priority: optional
+Maintainer: Daniel Baumann <daniel@debian.org>
+Build-Depends: debhelper (>= 7), dpatch, autotools-dev, autoconf, libcdparanoia0-dev, libcurl4-gnutls-dev, libglib2.0-dev, libgnome2-dev, libgnomeui-dev, libgtk2.0-dev, libid3-3.8.3-dev, libvte-dev
+Standards-Version: 3.8.0
+Homepage: http://grip.sourceforge.net/
+Vcs-Browser: http://git.debian.net/?p=debian/grip.git
+Vcs-Git: git://git.debian.net/git/debian/grip.git
+
+Package: grip
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: vorbis-tools, yelp
+Description: GNOME-based CD-player/ripper/encoder
+ Grip is a CD player and CD ripper/MP3-encoder for the GNOME desktop. It has
+ the ripping capabilities of cdparanoia built in, but can also use external
+ rippers (such as cdda2wav). It also provides an automated frontend for MP3
+ encoders, letting you take a disc and transform it easily straight into MP3s.
+ The Ogg Vorbis format is also supported. The CDDB protocol is supported for
+ retrieving track information from disc database servers. Grip works with
+ DigitalDJ to provide a unified, "computerized" version of your music
+ collection.

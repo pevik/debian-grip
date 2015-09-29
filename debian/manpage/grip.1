@@ -1,0 +1,176 @@
+.TH GRIP 1 "2006-07-29" "3.3.1" "Gtk Applications"
+
+.SH NAME
+grip \- A gtk-based cd-player and cd-ripper
+
+.SH SYNOPSIS
+.B grip
+.RB [\| \-\-class=CLASS \|]
+.RB [\| \-\-config=CONFIG \|]
+.RB [\| \-\-device=DEVICE \|]
+.RB [\| \-\-display=DISPLAY \|]
+.RB [\| \-\-disable-crash-dialog \|]
+.RB [\| \-\-disable-sound \|]
+.RB [\| \-\-enable-sound \|]
+.RB [\| \-\-espeaker=HOSTNAME:PORT \|]
+.RB [\| \-\-g-fatal-warnings \|]
+.RB [\| \-\-gdk-debug=FLAGS \|]
+.RB [\| \-\-gdk-no-debug=FLAGS \|]
+.RB [\| \-\-gtk-debug=FLAGS \|]
+.RB [\| \-\-gtk-no-debug=FLAGS \|]
+.RB [\| \-\-gtk-module=MODULE \|]
+.RB [\| \-\-geometry=GEOMETRY \|]
+.RB [\| \-\-load-modules=MODULE1,MODULE2,... \|]
+.RB [\| \-\-local \|]
+.RB [\| \-\-name=NAME \|]
+.RB [\| \-\-no-redirect \|]
+.RB [\| \-\-oaf-ior-fd=FD \|]
+.RB [\| \-\-oaf-activate-iid=IID \|]
+.RB [\| \-\-oaf-private \|]
+.RB [\| \-\-screen=SCREEN \|]
+.RB [\| \-\-scsi-device=DEVICE \|]
+.RB [\| \-\-sm-client-id=ID \|]
+.RB [\| \-\-sm-disable \|]
+.RB [\| \-\-sm-config-prefix=PREFIX \|]
+.RB [\| \-\-small \|]
+.RB [\| \-\-sync \|]
+.RB [\| \-\-verbose \|]
+.RB [\| \-\-version \|]
+.PP
+.B grip
+.RB [\| \-? \||\| \-\-help \|]
+.PP
+.B grip
+.RB [\| \-\-usage \|]
+
+.SH DESCRIPTION
+.B grip
+is a CD player and CD ripper/MP3-encoder for the GNOME desktop. It has the ripping capabilities of cdparanoia built in, but can also use external rippers (such as cdda2wav). It also provides an automated frontend for MP3 encoders, letting you take a disc and transform it easily straight into MP3s. The Ogg Vorbis format is also supported. The CDDB protocol is supported for retrieving track information from disc database servers. Grip works with DigitalDJ to provide a unified, "computerized" version of your music collection.
+
+.SH OPTIONS
+.PP
+
+Application options:
+.TP
+.B \-\-geometry=GEOMETRY
+Specify the geometry of the main window.
+.TP
+.B \-\-config=CONFIG
+Specify the config file to use (in your home dir).
+.TP
+.B \-\-device=DEVICE
+Specify the cdrom device to use.
+.TP
+.B \-\-scsi-device=DEVICE
+Specify the generic scsi device to use.
+.TP
+.B \-\-small
+Launch in "small" (cd-only) mode.
+.TP
+.B \-\-local
+"Local" mode \- do not look up disc info on the net.
+.TP
+.B \-\-no-redirect
+Do not do I/O redirection.
+.TP
+.B \-\-verbose
+Run in verbose (debug) mode.
+.PP
+
+GTK+ options:
+.TP
+.B \-\-gdk-debug=FLAGS
+Gdk debugging flags to set.
+.TP
+.B \-\-gdk-no-debug=FLAGS
+Gdk debugging flags to unset.
+.TP
+.B \-\-display=DISPLAY
+X display to use.
+.TP
+.B \-\-screen=SCREEN
+X screen to use.
+.TP
+.B \-\-sync
+Make X calls synchronous.
+.TP
+.B \-\-name=NAME
+Program name as used by the window manager.
+.TP
+.B \-\-class=CLASS
+Program class as used by the window manager.
+.TP
+.B \-\-gtk-debug=FLAGS
+Gtk+ debugging flags to set.
+.TP
+.B \-\-gtk-no-debug=FLAGS
+Gtk+ debugging flags to unset.
+.TP
+.B \-\-g-fatal-warnings
+Make all warnings fatal.
+.TP
+.B \-\-gtk-module=MODULE
+Load an additional Gtk module.
+.PP
+
+Bonobo activation Support options:
+.TP
+.B \-\-oaf-ior-fd=FD
+File descriptor to print IOR on.
+.TP
+.B \-\-oaf-activate-iid=IID
+IID to activate.
+.TP
+.B \-\-oaf-private
+Prevent registering of server with OAF.
+.PP
+
+GNOME Library options:
+.TP
+.B \-\-disable-sound
+Disable sound server usage.
+.TP
+.B \-\-enable-sound
+Enable sound server usage.
+.TP
+.B \-\-espeaker=HOSTNAME:PORT
+Host:port on which the sound server to use is running.
+.TP
+.B \-\-version
+2.14.1
+.PP
+
+Session management options:
+.TP
+.B \-\-sm-client-id=ID
+Specify session management ID.
+.TP
+.B \-\-sm-config-prefix=PREFIX
+Specify prefix of saved configuration.
+.TP
+.B \-\-sm-disable
+Disable connection to session manager.
+.PP
+
+GNOME GUI Library options:
+.TP
+.B \-\-disable-crash-dialog
+Disable Crash Dialog.
+.PP
+
+Help options:
+.TP
+.B \-?, \-\-help
+Show this help message.
+.TP
+.B \-\-usage
+Display brief usage message.
+
+.SH SEE ALSO
+.BR GNOME Help
+Start grip and select Help.
+
+.SH AUTHOR
+grip was written by Mike Oliphant <oliphant@gtk.org>.
+.PP
+This manual page was written by Daniel Baumann <daniel@debian.org>, for the Debian project (but may be used by others).

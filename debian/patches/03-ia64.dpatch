@@ -1,0 +1,52 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 03-ia64.dpatch by Dann Frazier <dannf@debian.org>
+##
+## DP: fix ia64 segv (closes: #318855)
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/tray.c grip-3.3.1/src/tray.c
+--- grip-3.3.1.orig/src/tray.c	2005-01-29 18:34:17.000000000 +0000
++++ grip-3.3.1/src/tray.c	2006-07-29 08:03:29.000000000 +0000
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "tray.h"
++#include "uihelper.h"
+ #include "../pixmaps/rip1.xpm"
+ #include "../pixmaps/menuplay.xpm"
+ #include "../pixmaps/menupause.xpm"
+diff -Naur grip-3.3.1.orig/src/uihelper.h grip-3.3.1/src/uihelper.h
+--- grip-3.3.1.orig/src/uihelper.h	1970-01-01 00:00:00.000000000 +0000
++++ grip-3.3.1/src/uihelper.h	2006-07-29 08:03:29.000000000 +0000
+@@ -0,0 +1,30 @@
++/* uihelper.h
++ *
++ * Copyright (c) 2005 dann frazier <dannf@debian.org>
++ *
++ *   http://www.nostatic.org/grip
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++ * USA
++ */
++
++#ifndef GRIP_UIHELPER_H
++#define GRIP_UIHELPER_H
++
++GtkWidget *Loadxpm(GtkWidget *widget,char **xpm);
++GtkWidget *BuildMenuItemXpm(GtkWidget *xpm, gchar *text);
++GtkWidget *BuildMenuItem(gchar *impath, gchar *text, gboolean stock);
++
++#endif

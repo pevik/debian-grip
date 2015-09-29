@@ -1,0 +1,557 @@
+grip (3.3.1-16) unstable; urgency=low
+
+  * Reverting config.sub and config.guess to upstream.
+  * Removing watch file.
+  * Removing useless whitespaces from changelog.
+  * Upgrading package to debhelper 7.
+  * Upgrading package to standards 3.8.0.
+  * Adding vcs fields in control file.
+  * Updating build-depends.
+  * Rewriting copyright file in machine-interpretable format.
+  * Removed no longer usefull README.Debian.
+  * Reordering rules file.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat,  8 Nov 2008 12:05:00 +0100
+
+grip (3.3.1-15) unstable; urgency=low
+
+  * Updating menu file to new policy.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 27 Dec 2007 12:25:00 +0100
+
+grip (3.3.1-14) unstable; urgency=low
+
+  * Removing libghttp from build-depends (Closes: 455695).
+  * Bumping policy version.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 11 Dec 2007 10:23:00 +0100
+
+grip (3.3.1-13) unstable; urgency=low
+
+  * Bumping package to debhelper 5.
+  * Fixing clean target in rules (Closes: #424374).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 17 Sep 2007 00:28:00 +0200
+
+grip (3.3.1-12) unstable; urgency=medium
+
+  * Added patch Frederic Bothamy <frederic.bothamy@free.fr>to replace gnome
+    specific browser call with x-www-browser (Closes: #414277).
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 10 Mar 2007 16:51:00 +0100
+
+grip (3.3.1-11) unstable; urgency=medium
+
+  * Added patch from Adrian Cox <adrian@humboldt.co.uk> to apply album gain
+    adjustment to the right album (Closes: #231886).
+  * Added patch from Matt Zimmerman <mdz@debian.org> to call executables in
+    path (Closes: #269596, #38447).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 29 Oct 2006 15:58:00 +0100
+
+grip (3.3.1-10) unstable; urgency=low
+
+  * Added patch from Flavio Stanchina <flavio@stanchina.net>:
+    - Add encode configuration for AAC files (Closes: #279224).
+    - Add %N switch for the number of tracks (Closes: #310176).
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 29 Sep 2006 11:23:00 +0200
+
+grip (3.3.1-9) unstable; urgency=low
+
+  * Downgrading depends on yelp to a recommends to allow skipping the long
+    depends chain of yelp when it is not intended.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri,  8 Sep 2006 20:25:00 +0200
+
+grip (3.3.1-8) unstable; urgency=low
+
+  * Updating 01-default-encoder.dpatch:
+    - passing track number to oggenc (Closes: #322738).
+    - using ~/ogg instead of ~/mp3 as output directory.
+    - removing useless 'Created by Grip' comment (Closes: #214723).
+  * Depending on yelp for the integrated help system (Closes: #278703, #324885).
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 14 Aug 2006 22:37:00 +0200
+
+grip (3.3.1-7) unstable; urgency=low
+
+  * Added 06-version.dpatch from Hidetaka Iwai <tyuyu@sabishiro.net> to fix
+    buffer overflow if the translated string of "Version %s" is more than 20
+    bytes (Closes: #382516).
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 28 Jul 2006 23:43:00 +0200
+
+grip (3.3.1-6) unstable; urgency=low
+
+  * New maintainer (Closes: #379984).
+  * Redone debian directory with debhelper instead of cdbs.
+  * Rewritten manpage.
+  * Rediffed all patches, updated descriptions and added bts numbers.
+  * Added pixmap (Closes: #162900)
+  * Added patch from Javier Fernandez-Sanguino Pena <jfs@computer.org> to
+    update Spanish translation (Closes: #354515).
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 11 Aug 2006 18:46:00 +0200
+
+grip (3.3.1-5) unstable; urgency=low
+
+  * Orphan package
+    - Change maintainer to Debian QA Group <packages@qa.debian.org>
+  * Fix dependency from "libcurl-ssl-dev" to
+    "libcurl3-gnutls-dev | libcurl-ssl-dev"
+  * Fix to build on GNU/kFreeBSD
+    (closes: #325321)
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu, 27 Jul 2006 02:24:23 +0900
+
+grip (3.3.1-4) unstable; urgency=low
+
+  * fix ia64 segv
+    (closes: #318855)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat,  6 Aug 2005 03:03:01 +0900
+
+grip (3.3.1-3) unstable; urgency=low
+
+  * Rebuild for new C++ ABI
+    (closes: #321202)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 18 Jul 2005 07:59:28 +0900
+
+grip (3.3.1-2) unstable; urgency=low
+
+  * Add "autoconf" to Build-Deps:
+    (closes: #318358)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 18 Jul 2005 07:55:36 +0900
+
+grip (3.3.1-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #294899, #244390)
+  * remove unnessesory patch: 15_add_id3tag_only_mp3file.dpatch
+    (closes: #311225)
+  * remove unnessesory patch: 30_fix_bogus_http_proxy
+  * remove unnessesory patch: 02_configure
+    - I made 01_config patch to create configure script
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 11 Jul 2005 00:27:55 +0900
+
+grip (3.2.0-5) unstable; urgency=low
+
+  * Add autotools-dev to Build-Deps. (Thanks to Andreas Jochens)
+    (closes: #299471)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 19 Mar 2005 01:41:19 +0900
+
+grip (3.2.0-4) unstable; urgency=high
+
+  * Fix cddb lookup buffer overflow (CAN-2005-0706)
+    (closes: #299248)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 14 Mar 2005 03:21:01 +0900
+
+grip (3.2.0-3) unstable; urgency=low
+
+  * Fix lintian warning about config.sub and config.guess
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 16 Aug 2004 00:20:38 +0900
+
+grip (3.2.0-2.1) unstable; urgency=medium
+
+  * NMU.
+  * Closes: #263688: Please use gcrypt11/gnutls11 instead of gcrypt7/gnutls10
+    - depend on libgnomeui-dev (>= 2.6.1.1-4)
+
+ -- Matthias Urlichs <smurf@debian.org>  Fri, 13 Aug 2004 10:04:38 +0200
+
+grip (3.2.0-2) unstable; urgency=low
+
+  * Add some document about filename encoding.  If you want to use
+    filename encoding non-utf8, you should set G_FILENAME_ENCODING
+    environmental variable.  Please read README.Debian.
+    (closes: #247976)
+  * Fix default oggenc commandline option. The genre is set correctly.
+    (closes: #259549)
+  * Fix bogus http proxy
+    (closes: #254233)
+  * Rebuild for libgnutls10
+    (closes: #259334)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 17 Jul 2004 07:50:50 +0900
+
+grip (3.2.0-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #217787, #219388, #245823)
+
+ -- Taku YASUI <tach@debian.or.jp>  Wed, 12 May 2004 01:30:56 +0900
+
+grip (3.1.10-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #238418, #242311)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sun, 25 Apr 2004 23:27:09 +0900
+
+grip (3.1.8-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #239846, #240402, #239903)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sun, 28 Mar 2004 04:49:41 +0900
+
+grip (3.1.7-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #238418, #128018, #160220, #229459)
+  * Delete unnecessary patch: 20_change_oggenc_options.dpatch
+    It was implemented perfectly on upstream
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 26 Mar 2004 00:22:17 +0900
+
+grip (3.1.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Sun, 14 Mar 2004 03:51:59 +0900
+
+grip (3.1.5-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/rules cleanup by using cdbs and dpatch
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu, 11 Mar 2004 14:33:31 +0900
+
+grip (3.1.4-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #218732)
+
+ -- Taku YASUI <tach@debian.or.jp>  Wed, 31 Dec 2003 00:00:42 +0900
+
+grip (3.1.3-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #219671)
+  * Add to GNOME2 menu
+    (closes: #219668)
+
+ -- Taku YASUI <tach@debian.or.jp>  Wed,  5 Nov 2003 21:09:19 +0900
+
+grip (3.1.2-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #214004)
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu,  2 Oct 2003 13:31:01 +0900
+
+grip (3.1.1-2) unstable; urgency=low
+
+  * Change section from sound to gnome
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 27 Sep 2003 16:46:21 +0900
+
+grip (3.1.1-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #187686)
+  * Fix Build-Deps
+    (closes: #212793)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 27 Sep 2003 15:03:14 +0900
+
+grip (3.0.7-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #155180)
+  * Fix: the disk filter doesn't work
+    (closes: #139145)
+  * Fix: empty .m3u files left around if "rip whole CD?" dialog
+    (closes: #179878)
+  * Re-construct package source tree
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 21 Jun 2003 16:13:42 +0900
+
+grip (3.0.6-1) unstable; urgency=low
+
+  * New upstream release
+  * Add manpage grip.1
+  * Replace config.guess and config.sub file to latest one
+  * Fix description
+    (closes: #187685)
+  * Fix build-deps
+    (closes: #181987)
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 14 Feb 2003 18:06:30 +0900
+
+grip (3.0.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 13 Jan 2003 10:43:11 +0900
+
+grip (3.0.4-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 27 Dec 2002 12:20:42 +0900
+
+grip (3.0.3-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu, 26 Sep 2002 01:28:44 +0900
+
+grip (3.0.2-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 20 Sep 2002 02:27:37 +0900
+
+grip (3.0.1-3) unstable; urgency=low
+
+  * Change build dependency from libid3-dev to libid3-3.8.0-dev
+    (closes: #158421)
+  * Include track number in Ogg Vorbis comments
+    (closes: #155970)
+  * Add debian/watch file to scan new upstream releases
+
+ -- Taku YASUI <tach@debian.or.jp>  Wed, 28 Aug 2002 12:03:10 +0900
+
+grip (3.0.1-2) unstable; urgency=low
+
+  * Updated ja.po
+    (closes: #149028)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 15 Jul 2002 23:04:45 +0900
+
+grip (3.0.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu, 20 Jun 2002 02:07:31 +0900
+
+grip (3.0.0-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 15 Apr 2002 12:34:02 +0900
+
+grip (2.99.3-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #131494, #140449, #140450)
+  * Add additional switches for oggenc.
+    (closes: #135292)
+  * Fixed: blindly writes ID3 tags into Ogg files
+    (closes: #125733)
+  * Set default encoder oggenc.
+    (closes: #135113)
+  * Add bison and gettext to Build-Depends: field.
+  * Add vorbis-tools to Recommends: field.
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 12 Apr 2002 02:37:37 +0900
+
+grip (2.99.2-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #138876)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon,  8 Apr 2002 09:26:34 +0900
+
+grip (2.98.7-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #69251, #110036)
+  * Fixed: devide-by-0 error on Alpha.
+    (closes: #127231, #131686)
+  * Add 'Suggests: gnome-help' to debian/control.
+    (closes: #131677)
+  * Add bitrate option for oggenc.
+    (closes: #87614, #128019, #132275)
+
+ -- Taku YASUI <tach@debian.or.jp>  Fri, 22 Feb 2002 00:58:43 +0900
+
+grip (2.98.5-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #42623, #50416, #79208, #97995, #100134, #105717, #109334,
+             #117952, #121182, #123260, #131189, #131353, #131479)
+  * Add libpopt-dev to Build-Depends:
+    (closes: #131050)
+
+ -- Taku YASUI <tach@debian.or.jp>  Wed, 30 Jan 2002 18:55:31 +0900
+
+grip (2.98.4-1) unstable; urgency=low
+
+  * New upstream release
+    (closes: #129874)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sat, 26 Jan 2002 01:01:12 +0900
+
+grip (2.96-4) unstable; urgency=low
+
+  * Fixed: Track selection lost upon completion of cddb lookup
+    (closes: #109649)
+
+ -- Taku YASUI <tach@debian.or.jp>  Thu, 25 Oct 2001 01:12:48 +0900
+
+grip (2.96-3) unstable; urgency=low
+
+  * Fixed: dafault encoder path.
+    (closes: #91361)
+
+ -- Taku YASUI <tach@debian.or.jp>  Sun, 14 Oct 2001 13:22:18 +0900
+
+grip (2.96-2) unstable; urgency=low
+
+  * add default support for FLAC lossless encoder.
+    (fixed Bug#105717)
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon, 23 Jul 2001 23:03:45 +0900
+
+grip (2.96-1) unstable; urgency=low
+
+  * New upstream release.
+    (closes: #105267, #92914)
+
+ -- Taku YASUI <tach@debian.or.jp>  Tue, 17 Jul 2001 19:21:05 +0900
+
+grip (2.95-5) unstable; urgency=low
+
+  * Maintainer is changed to Taku YASUI <tach@debian.or.jp>.
+    closes: #103093.
+
+ -- Taku YASUI <tach@debian.or.jp>  Mon,  2 Jul 2001 23:59:55 +0900
+
+grip (2.95-4) unstable; urgency=low
+
+  * Fixed a segfault when loading cddb info for a particular disc.
+    Patch provided by Matt Zimmerman <mdz@debian.org>.
+    closes: #88434.
+  * DEB_BUILD_OPTIONS: our CFLAGS aren't overridden by upstrem Makefile.
+    closes: #88433.
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Sun,  4 Mar 2001 18:34:36 +0100
+
+grip (2.95-3) unstable; urgency=low
+
+  * Fixed a mem leak caused by thread usage; closes: #78554.
+  * Removed "Created by Grip" from mp3info; closes: #69249.
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Tue, 19 Dec 2000 20:00:05 +0100
+
+grip (2.95-2) unstable; urgency=low
+
+  * Fixed grip.c to prevent a segfault; closes: #75395.
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Wed, 15 Nov 2000 19:18:00 +0100
+
+grip (2.95-1) unstable; urgency=low
+
+  * New upstream version.
+    (closes: #67683, #67688)
+
+  * Standard compliant to 3.2.1
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Thu, 19 Oct 2000 17:41:50 +0200
+
+grip (2.94-1) unstable; urgency=low
+
+  * New upstream version.
+  * Old bugs that we can safely close; closes: #48688, #48690, #35226,
+    #42598, #43006, #45780, #50061, #51460, #51461, #58901, #60813, #61275,
+    #63424, #47908, #63425, #63682.
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Wed,  4 Oct 2000 19:32:46 +0200
+
+grip (2.91-2) unstable; urgency=low
+
+  * New maintainer release.
+
+ -- Davide Puricelli (evo) <evo@debian.org>  Tue,  3 Oct 2000 14:54:13 +0200
+
+grip (2.91-1) unstable; urgency=low
+
+  * New upstream version (Closes: #52560, #53538, #49622, #45476)
+
+ -- Dima Barsky <dima@debian.org>  Mon, 03 Jan 2000 22:57:39 +0000
+
+grip (2.7-2) unstable; urgency=low
+
+  * Applied a patch from Brett Viren <bviren@superk.physics.sunysb.edu>,
+    which fixes two buffer overflows in cddb.c (Closes: #40552)
+
+ -- Dima Barsky <dima@debian.org>  Sat, 25 Sep 1999 01:36:44 +0100
+
+grip (2.7-1) unstable; urgency=low
+
+  * New upstream version (Closes: #39484, #40553, #40554, #43891, #44742)
+
+ -- Dima Barsky <dima@debian.org>  Fri, 24 Sep 1999 20:29:42 +0100
+
+grip (2.5-1) unstable; urgency=low
+
+  * New upstream version (Closes: #41976)
+  * Split into grip and gcd
+  * grip now depends on libcdparanoia0 (Closes: #40784)
+  * Fixed the problem with va_start (Closes: #38947)
+ -- Dima Barsky <dima@debian.org>  Tue,  27 Jul 1999 22:32:47 +0000
+
+grip (2.0-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Dima Barsky <dima@debian.org>  Fri,  28 May 1999 15:34:21 +0100
+
+grip (1.9-1) unstable; urgency=low
+
+  * New upstream version
+  * Grip now reads $HOME/.grip.cfg (if it is available),
+    otherwise /etc/grip.cfg. When saving the configuration, it tries
+    those files in the reversed order. Closes #33297, #36533
+  * All configuration fields are now editable, because both setuid and
+    setgid bits are cleared during the installation, so there is no
+    security risk. Closes #34417
+
+ -- Dima Barsky <dima@debian.org>  Sat,  8 May 1999 22:04:12 +0100
+
+grip (1.8-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Dima Barsky <dima@debian.org>  Tue,  6 Apr 1999 19:23:02 +0100
+
+grip (1.7-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Dima Barsky <dima@debian.org>  Fri,  2 Apr 1999 13:06:41 +0100
+
+grip (1.4-1) unstable; urgency=low
+
+  * New upstream version
+  * Save grip.cfg in /etc rather than in /usr/lib/grip
+    Closes #34810
+
+ -- Dima Barsky <dima@debian.org>  Sat, 20 Mar 1999 00:29:13 +0000
+
+grip (1.2-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Dima Barsky <dima@debian.org>  Sat, 27 Feb 1999 00:52:03 +0000
+
+grip (1.1-1) unstable; urgency=low
+
+  * New upstream version
+
+ -- Dima Barsky <dima@debian.org>  Thu, 18 Feb 1999 23:39:28 +0000
+
+grip (0.9-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Dima Barsky <dima@debian.org>  Sun, 24 Jan 1999 19:59:16 +0000

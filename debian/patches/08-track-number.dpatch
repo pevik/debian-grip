@@ -1,0 +1,34 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 08-track-number.dpatch by Flavio Stanchina <flavio@stanchina.net>
+##
+## DP: Add %N switch for the number of tracks (Closes: #310176).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/doc/C/grip.xml grip-3.3.1/doc/C/grip.xml
+--- grip-3.3.1.orig/doc/C/grip.xml	2004-04-15 17:51:47.000000000 +0000
++++ grip-3.3.1/doc/C/grip.xml	2006-09-29 09:28:41.000000000 +0000
+@@ -1110,6 +1110,9 @@
+             number,beginning at 1, and zero-filled (ie: '03' for the third
+             track).  </para></listitem>
+ 
++        <listitem><para><guilabel>N</guilabel> &mdash; The number of
++            tracks, zero-filled (ie: '07'). </para></listitem>
++
+         <listitem><para><guilabel>s</guilabel> &mdash; The start sector of
+             the track.  </para></listitem>
+ 
+diff -Naur grip-3.3.1.orig/src/rip.c grip-3.3.1/src/rip.c
+--- grip-3.3.1.orig/src/rip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/rip.c	2006-09-29 09:28:41.000000000 +0000
+@@ -1147,6 +1147,10 @@
+     g_snprintf(res,PATH_MAX,"%02d",enc_track->track_num+1);
+     *munge=FALSE;
+     break;
++  case 'N':
++    g_snprintf(res,PATH_MAX,"%02d",enc_track->ginfo->prog_totaltracks);
++    *munge=FALSE;
++    break;
+   case 's':
+     g_snprintf(res,PATH_MAX,"%d",enc_track->ginfo->start_sector);
+     *munge=FALSE;

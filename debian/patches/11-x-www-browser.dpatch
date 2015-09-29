@@ -1,0 +1,22 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 11-x-www-browser.dpatch by Frederic Bothamy <frederic.bothamy@free.fr>
+##
+## DP: Replaces gnome specific browser call with x-www-browser
+## DP: (Closes: #414277).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/grip.c grip-3.3.1/src/grip.c
+--- grip-3.3.1.orig/src/grip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/grip.c	2007-03-10 15:52:14.000000000 +0000
+@@ -625,7 +625,9 @@
+ 
+ static void Homepage(void)
+ {
+-  system("gnome-moz-remote http://www.nostatic.org/grip");
++  if (system("gnome-moz-remote http://www.nostatic.org/grip")!=0)
++    if (system("x-www-browser http://www.nostatic.org/grip")!=0)
++      system("www-browser http://www.nostatic.org/grip");
+ }
+ 
+ static void LoadImages(GripGUI *uinfo)

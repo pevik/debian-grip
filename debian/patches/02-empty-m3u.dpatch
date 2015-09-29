@@ -1,0 +1,55 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 02-empty-m3u.dpatch by Taku YASUI <tach@debian.or.jp>
+##
+## DP: Fix: empty .m3u files left around if "rip whole CD?" dialog
+## DP: (closes: #179878)
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/rip.c grip-3.3.1/src/rip.c
+--- grip-3.3.1.orig/src/rip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/rip.c	2006-07-29 08:02:31.000000000 +0000
+@@ -636,6 +636,31 @@
+   return TRUE;
+ }
+ 
++void RemoveM3U(GripInfo *ginfo)
++{
++  FILE *fp;
++  EncodeTrack enc_track;
++  char testchar;
++  GString *str;
++
++  if (!ginfo->have_disc) return;
++
++  str=g_string_new(NULL);
++
++  FillInTrackInfo(ginfo, 0, &enc_track);
++  TranslateString(ginfo->m3ufileformat, str, TranslateSwitch,
++		  &enc_track, TRUE, &(ginfo->sprefs));
++
++  fp=fopen(str->str, "r");
++  if (fp==NULL)
++    return;
++  testchar = fgetc(fp);
++  fclose(fp);
++  if (testchar == EOF)
++    remove(str->str);
++  return;
++}
++
+ void KillRip(GtkWidget *widget,gpointer data)
+ {
+   GripInfo *ginfo;
+@@ -1341,7 +1366,10 @@
+   int track;
+   GripInfo *ginfo;
+ 
+-  if(reply) return;
++  if(reply) {
++    RemoveM3U((GripInfo *) data);
++    return;
++  }
+ 
+   Debug(_("Ripping whole CD\n"));
+ 

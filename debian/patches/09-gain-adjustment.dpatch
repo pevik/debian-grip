@@ -1,0 +1,37 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 09-gain-adjustment.dpatch by Adrian Cox <adrian@humboldt.co.uk>
+##
+## DP: Applies album gain adjustment to the right album (Closes: #231886).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/rip.c grip-3.3.1/src/rip.c
+--- grip-3.3.1.orig/src/rip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/rip.c	2006-10-29 14:54:46.000000000 +0000
+@@ -1080,7 +1080,17 @@
+   
+ #ifdef CDPAR
+     if(ginfo->using_builtin_cdp && ginfo->calc_gain) {
++      GList *plist;
++
+       ginfo->disc_gain_adjustment=GetAlbumGain();
++
++      /* Apply disc gain to all tracks on pending list */
++      for(plist = g_list_first(ginfo->pending_list); plist != NULL;
++                               plist = g_list_next(plist)) {
++        EncodeTrack *enc_track = (EncodeTrack *) plist->data;
++        enc_track->disc_gain_adjustment = ginfo->disc_gain_adjustment;
++      }
++
+     }
+ #endif
+   
+@@ -1616,7 +1626,7 @@
+   new_track->end_frame=ginfo->disc.track[track+1].start_frame-1;
+ #ifdef CDPAR
+   new_track->track_gain_adjustment=ginfo->track_gain_adjustment;
+-  new_track->disc_gain_adjustment=ginfo->disc_gain_adjustment;
++  new_track->disc_gain_adjustment=0.0;
+ #endif
+ 
+   /* Compensate for the gap before a data track */

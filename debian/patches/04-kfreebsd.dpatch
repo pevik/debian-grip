@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 04-kfreebsd.dpatch by Aurelien Jarno <aurel32@debian.org>
+##
+## DP: Fix to build on GNU/kFreeBSD (closes: #325321
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/grip.h grip-3.3.1/src/grip.h
+--- grip-3.3.1.orig/src/grip.h	2005-01-29 18:34:17.000000000 +0000
++++ grip-3.3.1/src/grip.h	2006-07-29 08:04:13.000000000 +0000
+@@ -49,7 +49,7 @@
+ 
+ #define RRand(range) (random()%(range))
+ 
+-#if defined(__linux__) || defined(__FreeBSD__) || defined(__NetBSD__) || defined(__osf__)  /* __osf__ ?? */
++#if defined(__linux__) || defined(__FreeBSD__) || defined(__GLIBC__) || defined(__NetBSD__) || defined(__osf__)  /* __osf__ ?? */
+ 
+ #define MAILER "/usr/sbin/sendmail -i -t"
+ 

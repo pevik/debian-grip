@@ -1,0 +1,3 @@
+?package(grip):needs="X11" section="Applications/Sound"\
+  title="Grip" longtitle="CD-player/ripper/encoder"\
+  command="/usr/bin/grip" icon="/usr/share/pixmaps/grip.xpm"

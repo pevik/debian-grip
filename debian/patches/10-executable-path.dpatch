@@ -1,0 +1,28 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 10-executable-path.dpatch by Matt Zimmerman <mdz@debian.org>
+##
+## DP: Calls executables in path (Closes: #269596, #38447).
+
+@DPATCH@
+
+diff -Naur grip-3.3.1.orig/src/rip.c grip-3.3.1/src/rip.c
+--- grip-3.3.1.orig/src/rip.c	2005-06-25 18:00:55.000000000 +0000
++++ grip-3.3.1/src/rip.c	2006-10-29 15:04:59.000000000 +0000
+@@ -1530,7 +1530,7 @@
+       if(ginfo->rippid==0) {
+ 	CloseStuff(ginfo);
+ 	nice(ginfo->ripnice);
+-	execv(ginfo->ripexename,char_args);
++	execvp(ginfo->ripexename,char_args);
+ 	
+ 	LogStatus(ginfo,_("Exec failed\n"));
+ 	_exit(0);
+@@ -1773,7 +1773,7 @@
+     CloseStuff(ginfo);
+     setsid();
+     nice(ginfo->mp3nice);
+-    execv(ginfo->mp3exename,char_args);
++    execvp(ginfo->mp3exename,char_args);
+     _exit(0);
+   }
+   else {
