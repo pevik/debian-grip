@@ -1,3 +1,9 @@
+grip (3.3.1-16-pev1) unstable; urgency=low
+
+  * Rebuild for current stretch/sid.
+
+ -- Petr Vorel <petr.vorel@gmail.com>  Tue, 29 Sep 2015 21:40:52 +0200
+
 grip (3.3.1-16) unstable; urgency=low
 
   * Reverting config.sub and config.guess to upstream.
